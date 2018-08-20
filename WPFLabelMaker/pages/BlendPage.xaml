@@ -1,0 +1,56 @@
+﻿<pages:NotifyUserControl x:Class="WPFLabelMaker.pages.BlendPage"
+                           xmlns:pages="clr-namespace:WPFLabelMaker.pages"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                         xmlns:controlers="clr-namespace:WPFLabelMaker.controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <RadioButton HorizontalAlignment="Center" GroupName="sloc" x:Name="Shin_Radio" Checked="SRadioButton_Checked" DataContext="0" IsChecked="True" FontSize="16" Margin="10,2">石牌</RadioButton>
+            <RadioButton HorizontalAlignment="Center" GroupName="sloc" x:Name="Lou_Radio" Checked="SRadioButton_Checked" DataContext="1" FontSize="16" Margin="10,2">蘆洲</RadioButton>
+            <RadioButton HorizontalAlignment="Center" GroupName="sloc" x:Name="Nah_Radio" Checked="SRadioButton_Checked" DataContext="2" FontSize="16" Margin="10,2">內湖</RadioButton>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <TextBlock Text="公司：" FontSize="16"  Margin="10,10,1,5" Height="25"/>
+            <controlers:AutoComboxCompany Company="{Binding Path=GroupCompany,Mode=TwoWay}" CompanyName="{Binding Path=GroupCompanyName,Mode=TwoWay}" ></controlers:AutoComboxCompany>
+            <Button Margin="5,5,0,5" Click="ClearButton_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/images/clear.png" Height="20"/>
+                    <TextBlock >清除全部</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <GroupBox Header="清單" FontSize="16" Grid.Row="2">
+            <Grid VerticalAlignment="Stretch">
+                <DataGrid x:Name="ListBox_NTList"  AutoGenerateColumns="False" HorizontalScrollBarVisibility="Auto" CanUserDeleteRows="True" CanUserSortColumns="True" 
+                       AlternationCount="2" SelectionMode="Single" Margin="0,0,0,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=Sn, Mode=TwoWay}" Header="工單編號" Width="100" />
+                        <DataGridTextColumn Binding="{Binding Path=StartTime, Mode=TwoWay}" Header="日期" Width="60" />
+                        <DataGridTextColumn Binding="{Binding Path= Matel, Mode=TwoWay}" Header="材質" Width="60" />
+                        <DataGridTextColumn Binding="{Binding Path=Tile, Mode=TwoWay}" Header="厚度" Width="SizeToHeader" />
+                        <DataGridTextColumn Binding="{Binding Path=SizeLong, Mode=TwoWay}" Header="長" Width="50"  />
+                        <DataGridTextColumn Binding="{Binding Path=SizeShort, Mode=TwoWay}" Header="寬" Width="50" />
+                        <DataGridTextColumn Binding="{Binding Path=Number, Mode=TwoWay}" Header="數量" Width="SizeToHeader" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+        <CheckBox Content="是否加印一張 " Grid.Row="3" Margin="10,2,5,2" x:Name="Result_Addone" IsChecked="True" VerticalAlignment="Center" />
+        <Button Grid.Row="4" Click="PrintButton_Click">
+            <TextBlock  Text="開始列印" FontSize="20"/>
+        </Button>
+    </Grid>
+</pages:NotifyUserControl>

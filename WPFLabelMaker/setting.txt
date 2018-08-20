@@ -1,0 +1,18 @@
+﻿PrinterName:Argox CP-3140LE
+Font1:42
+Font1XLoc:-2
+Font1XSplit:70
+Font1YLoc:20
+Font2:28
+Font2XLoc:5
+Font2YLoc:92
+SCFont1:38
+SCFont1XLoc:-2
+SCFont1XSplit:70
+SCFont1YLoc:10
+SCFont2:24
+SCFont2XLoc:-2
+SCFont2YLoc:65
+SCFont3:24
+SCFont3XLoc:-2
+SCFont3YLoc:95

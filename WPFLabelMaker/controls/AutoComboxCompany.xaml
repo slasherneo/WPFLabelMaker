@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="WPFLabelMaker.controls.AutoComboxCompany"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:toolkitInput="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="25" d:DesignWidth="200"
+             x:Name="AutoComoboxCompany">
+    <toolkitInput:AutoCompleteBox FilterMode="Custom"  IsTextCompletionEnabled="False" IsManipulationEnabled="False" Height="25" x:Name="NTCompanyName" Width="200" DropDownClosing="CBCompanyName_DropDownClosing" IsTabStop="False" 
+                                  SelectedItem="{Binding ElementName=AutoComoboxCompany,Path=Company,Mode=TwoWay}" Text="{Binding ElementName=AutoComoboxCompany,Path=CompanyName,Mode=TwoWay}" >
+        <toolkitInput:AutoCompleteBox.ItemTemplate>
+            <DataTemplate>
+                <Grid Width="200">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85" />
+                        <ColumnDefinition Width="115" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  HorizontalAlignment="Left"  Foreground="Gray"  Text="{Binding ID}"  Grid.Column="0"  />
+                    <TextBlock  HorizontalAlignment="Left"  Foreground="Gray"  Text="{Binding Name}"  Grid.Column="1"  />
+                </Grid>
+            </DataTemplate>
+        </toolkitInput:AutoCompleteBox.ItemTemplate>
+    </toolkitInput:AutoCompleteBox>
+</UserControl>
